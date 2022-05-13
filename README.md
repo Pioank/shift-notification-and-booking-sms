@@ -11,4 +11,16 @@ Such use cases involve employees who hold manual posts with little access to the
 
 ## Solution
 
+The solution in this repository covers both parts of the process described above.
+
+**Communicating available shifts to employees who are interested:**
+New shifts should be recorded in a data base, along with their status (available / taken) and other information that can be useful when sending the message. This solution uses DynamoDB to store the shifts with the **key = shift_id**. When new shifts are added, marketers or an automated process, will create a new line in a second DynamoDB table with **key = campaign_id**. This DynamoDB table comprises from the **key** and a free text field containing a list of the available shifts. Users can add any information about the shift they want to as long as they contain the **shift_id**.
+
+Whenever a new line is created in the **campaign_id** DynamoDB table, DynamoDB-Streams invokes an AWS Lambda function that creates an Amazon Pinpoint SMS Campaign using a dynamic segment that includes all employees interested in extra shifts. Note that it is assumed you have already imported your employee data as Pinpoint SMS endpoints and have created a dynamic semgent that includes all employees interested in extra shifts.
+
+The message sent to the employees contains 
+
+**Employees confirming, which of the available shifts want**
+Once the employees
+
 
