@@ -1,4 +1,4 @@
-# author: pavlosik@
+# author: pavlos-ioannou-katidis
 ---
 AWSTemplateFormatVersion: 2010-09-09
 Description: Shift Notification & Booking via SMS
