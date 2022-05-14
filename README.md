@@ -51,7 +51,10 @@ This solution can be deployed using AWS CloudFormation.
 ### Implementation steps
 1. Deploy the solution in the same AWS region as your Pinpoint project
 2. Fill the CloudFormation parameters as shown below:
-  1. **ApprovedNumbers**: Type all mobile numbers that are allowed to use this serivce. The format should be E164 +<country-code><number> and they should be separated by commas e.g. +4457434243,+432434324. This field is for demo purposes and you should update the AWS Lambda code to query a DB that contains all whitelisted employee mobile numbers.
-  2. **OriginationNumber**: Type the mobile number that you have in your Amazon Pinpoint account in E164 format E164 +<country-code><number> e.g. +44384238975
-  3. **PinpointProjectId**: Type the existing Amazon Pinpoint project ID
-  4. **SegmentId**: Type the Amazon Pinpoint existing dynamic segment ID that you would like to send the SMS notifications to
+    1. **ApprovedNumbers**: Type all mobile numbers that are allowed to use this serivce. The format should be E164 +<country-code><number> and they should be separated by commas e.g. +4457434243,+432434324. This field is for demo purposes and you should update the AWS Lambda code to query a DB that contains all whitelisted employee mobile numbers.
+    2. **OriginationNumber**: Type the mobile number that you have in your Amazon Pinpoint account in E164 format E164 +<country-code><number> e.g. +44384238975
+    3. **PinpointProjectId**: Type the existing Amazon Pinpoint project ID
+    4. **SegmentId**: Type the Amazon Pinpoint existing dynamic segment ID that you would like to send the SMS notifications to
+3. Once the solution has been successfully deployed, navigate to the DynamoDB console and access the **ShiftsStatusDynamoDB** table and create as many items as new shifts needed. Each item should have a **shift_id** that employees will use to book the shifts, a column **shift_status** with the value **available** and a column **shift_info** where you can put additional information about the shift. See example below: ![shift_status_db](https://github.com/Pioank/shift-notification-and-booking-sms/blob/main/assets/shift_status_dynamoDB.PNG)
+4. Navigate to **Amazon Pinpoint console > SMS and voice > Phone numbers**, select the **Number** that you used as **OriginationNumber** in the CloudFormation above, enable **Two-way SMS**, under the **Incoming messages destination** select **Choose an existing SNS topic** and select the one containing the name **TwoWaySMSSNSTopic**
+5. Navigate to 
