@@ -50,4 +50,8 @@ This solution can be deployed using AWS CloudFormation.
 
 ### Implementation steps
 1. Deploy the solution in the same AWS region as your Pinpoint project
-2. 
+2. Fill the CloudFormation parameters as shown below:
+3. **ApprovedNumbers**: Type all mobile numbers that are allowed to use this serivce. The format should be E164 +<country-code><number> and they should be separated by commas e.g. +4457434243,+432434324. This field is for demo purposes and you should update the AWS Lambda code to query a DB that contains all whitelisted employee mobile numbers.
+4. **OriginationNumber**: Type the mobile number that you have in your Amazon Pinpoint account in E164 format E164 +<country-code><number> e.g. +44384238975
+5. **PinpointProjectId**: Type the existing Amazon Pinpoint project ID
+6. **SegmentId**: Type the Amazon Pinpoint existing dynamic segment ID that you would like to send the SMS notifications to
