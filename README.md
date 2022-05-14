@@ -49,7 +49,7 @@ This solution can be deployed using AWS CloudFormation.
 2. Have a Pinpoint project, all SMS endpoints imported and a dynamic segment with all employess interested in extra shifts
 
 ### Implementation steps
-1. Deploy the solution in the same AWS region as your Pinpoint project
+1. Download the [CloudFormation template](https://github.com/Pioank/shift-notification-and-booking-sms/blob/main/CF-shift-notification-and-booking-sms.yaml) and deploy the solution in the same AWS region as your Pinpoint project
 2. Fill the CloudFormation parameters as shown below:
     1. **ApprovedNumbers**: Type all mobile numbers that are allowed to use this serivce. The format should be E164 +<country-code><number> and they should be separated by commas e.g. +4457434243,+432434324. This field is for demo purposes and you should update the AWS Lambda code to query a DB that contains all whitelisted employee mobile numbers.
     2. **OriginationNumber**: Type the mobile number that you have in your Amazon Pinpoint account in E164 format E164 +<country-code><number> e.g. +44384238975
@@ -61,7 +61,7 @@ This solution can be deployed using AWS CloudFormation.
 **Note:** By completing Step 5 above, you will trigger an Amazon Pinpoint SMS Campaign. You access the campaign information and analytics from the Amazon Pinpoint console.
 ![shift_campaign_db](https://github.com/Pioank/shift-notification-and-booking-sms/blob/main/assets/shift_campaign_dynamoDB.PNG)
 
-### Testing
+## Testing
 1. Make sure you have created the shifts in the **ShiftsStatusDynamoDB** table
 2. To test the SMS Campaign, replicate Step 5 under **Implementation**
 3. Send SMS to your application mobile number to test the responses:
