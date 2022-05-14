@@ -21,8 +21,10 @@ Whenever a new line is created in the **shift_campaigns** DynamoDB table, Dynamo
 The message sent to the employees contains the **shifts**, which are being retrieved from the **shifts_campaigns** DynamoDB table and a static part to inform recipients how to reply. See example below:
 "Available shifts: ' + **shifts** + '. To secure a shift reply by typing the codes separated by comma e.g. XYZ123, XYZ222. You can always text REQUEST to see which shifts are still available or text STOP to stop receiving such notifications"
 
+### SMS campaign logic
 ![sms-campaign-logic](https://github.com/Pioank/shift-notification-and-booking-sms/blob/main/assets/sms-campaign-logic.PNG)
 
+### SMS campaign architecture
 ![sms-campaign-architecture](https://github.com/Pioank/shift-notification-and-booking-sms/blob/main/assets/sms-campaign-architecture.PNG)
 
 **Employees confirming, which of the available shifts want**
@@ -32,8 +34,10 @@ Employess who send an SMS with invalid content, they will receive an SMS informi
 
 This solution uses a "dummy" **whitelist** with the employee numbers that can access this service. The mobile numbers of all senders are being checked against the whitelist and if they are not part of it they will receive an SMS saying, access denied. You should maintain a **whitelist** in a separate DB if you are planning to impelement this solution in production.
 
+### Inbound SMS logic
 ![inbound-sms-logic](https://github.com/Pioank/shift-notification-and-booking-sms/blob/main/assets/inbound-sms-logic.PNG)
 
+### Inbound SMS architecture
 ![inbound-sms-architecture](https://github.com/Pioank/shift-notification-and-booking-sms/blob/main/assets/inbound-sms-architecture.PNG)
 
 ## Implementation
