@@ -119,9 +119,9 @@ Resources:
                           else:
                               list_of_shifts = []
                               for i in data_query['Items']:
-                                  list_of_shifts.append(str(i['route']) + " " + str(i['shift_id']) + " ,")
+                                  list_of_shifts.append(str(i['shift_info']) + " " + str(i['shift_id']) + " ,")
                                   
-                              message_send = str('These are the routes available : ' + str(list_of_shifts).replace('[','').replace(']','').replace("'",''))
+                              message_send = str('These are the shifts available : ' + str(list_of_shifts).replace('[','').replace(']','').replace("'",''))
                               send_sms(message_send, origination_number, destination_number)
                       else:
                           shifts = ((message.upper()).replace(' ','')).split(',')
