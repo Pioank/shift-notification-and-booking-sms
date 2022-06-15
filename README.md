@@ -2,16 +2,17 @@
 
 ## Description
 
-Companies might have extra shifts for their employees, which are considered overtime and are not allocated. These shifts are usually communicated in advance and employees who are seeking to generate extra income can book them. There are two parts in this process:
+Companies might have extra shifts for their employees, which are considered overtime and are not allocated. These shifts are usually communicated in advance and employees who are seeking to generate extra income can book them. There are three parts in this process:
 
 - The company communicating the available shifts to employees who are interested
 - Employees confirming, which of the available shifts want
+- Employees request help, which connects to an agent via call
 
 Such use cases involve employees who hold manual posts with little access to the internet. SMS is the preffered channel to communicate available shifts as well as receive the employees' requests. Using SMS ensures that everyone can receive and book available shifts with no accessibility issues. For companies that have a call center, this solution can function as a first line application and still give the option to its users to receive a call from an agent.
 
 ## Solution
 
-The solution in this repository covers both parts of the process described above.
+The solution in this repository covers all three parts of the process described above.
 
 **Communicating available shifts to employees who are interested:**
 New shifts should be recorded in a data base, along with their status (available / taken) and other information that can be useful when sending the message. This solution uses a DynamoDB table called **shift_status** to store the shifts with the **key = shift_id**. When new shifts are added, marketers or an automated process, will create a new line in a second DynamoDB table called **shift_campaigns**  with **key = campaign_id**. The **shift_campaigns** DynamoDB table comprises from the **key** and a free text field containing a list of the available shifts. Users can add any information about the shift they want to as long as they contain the **shift_id**.
